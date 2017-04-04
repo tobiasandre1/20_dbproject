@@ -4,6 +4,7 @@ import daoimpl01917.MySQLOperatoerDAO;
 import daoimpl01917.MySQLProduktBatchDAO;
 import daointerfaces01917.DALException;
 import dto01917.OperatoerDTO;
+import dto01917.ProduktBatchDTO;
 
 import java.sql.SQLException;
 
@@ -26,8 +27,10 @@ public class Main {
 	
 	private static void testOPR(){
 		System.out.println("__________________________________________");
-		System.out.println("Operatoer nummer 3:");
+		
 		MySQLOperatoerDAO opr = new MySQLOperatoerDAO();
+		
+		System.out.println("Operatoer nummer 3:");
 		try { System.out.println(opr.getOperatoer(3)); }
 		catch (DALException e) { System.out.println(e.getMessage()); }
 		
@@ -64,11 +67,45 @@ public class Main {
 	}
 	
 	private static void testPB(){
+		/*
+		 * This method has exactly the same tests as testOPR
+		 */
 		System.out.println("__________________________________________");
 		
-		System.out.println("Produktbatch nummer 2:");
 		MySQLProduktBatchDAO produktbatch = new MySQLProduktBatchDAO();
+		
+		System.out.println("Produktbatch nummer 2:");
 		try { System.out.println(produktbatch.getProduktBatch(2)); }
 		catch (DALException e) { System.out.println(e.getMessage()); }
+		
+		System.out.println("Indsaettelse af ny produktbatch med pb_id =  6");
+		ProduktBatchDTO produktbatchDTO = new ProduktBatchDTO(6, 2, 2);
+		try { produktbatch.createProduktBatch(produktbatchDTO); }
+		catch (DALException e) { System.out.println(e.getMessage()); }
+		//Will give an SQL exception ^
+		//This is because previous tests have inserted an operatoer 
+		//with the ID 4 and we cannot have duplicate primary keys.
+		
+		System.out.println("Produktbatch nummer 6:");
+		try { System.out.println(produktbatch.getProduktBatch(6)); }
+		catch (DALException e) { System.out.println(e.getMessage()); }
+		
+		System.out.println("Opdatering af status for produktbatch nummer 6");
+		produktbatchDTO.setStatus(5);
+		try { produktbatch.updateProduktBatch(produktbatchDTO); }
+		catch (DALException e) { System.out.println(e.getMessage()); }
+		
+		System.out.println("Produktbatch nummer 6:");
+		try { System.out.println(produktbatch.getProduktBatch(6)); }
+		catch (DALException e) { System.out.println(e.getMessage()); }
+		
+		System.out.println("Alle produkt batches:");
+		try { System.out.println(produktbatch.getProduktBatchList()); }
+		catch (DALException e) { System.out.println(e.getMessage()); }
+		
+		System.out.println("Produktbatch nummer 7:");
+		try { System.out.println(produktbatch.getProduktBatch(7)); }
+		catch (DALException e) { System.out.println(e.getMessage()); }
+		
 	}
 }
