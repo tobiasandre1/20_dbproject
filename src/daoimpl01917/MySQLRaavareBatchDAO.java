@@ -6,6 +6,10 @@ import daointerfaces01917.DALException;
 import daointerfaces01917.RaavareBatchDAO;
 import dto01917.RaavareBatchDTO;
 
+/**
+ * @author Danny
+ *
+ */
 public class MySQLRaavareBatchDAO implements RaavareBatchDAO {
 
 	@Override

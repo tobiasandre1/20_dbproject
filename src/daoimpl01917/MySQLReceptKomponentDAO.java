@@ -6,6 +6,10 @@ import daointerfaces01917.DALException;
 import daointerfaces01917.ReceptKompDAO;
 import dto01917.ReceptKompDTO;
 
+/**
+ * @author Theis
+ *
+ */
 public class MySQLReceptKomponentDAO implements ReceptKompDAO {
 
 	@Override

@@ -6,6 +6,10 @@ import daointerfaces01917.DALException;
 import daointerfaces01917.RaavareDAO;
 import dto01917.RaavareDTO;
 
+/**
+ * @author Tobias
+ *
+ */
 public class MySQLRaavareDAO implements RaavareDAO {
 
 	@Override

@@ -6,6 +6,10 @@ import daointerfaces01917.DALException;
 import daointerfaces01917.ProduktBatchKompDAO;
 import dto01917.ProduktBatchKompDTO;
 
+/**
+ * @author Gustav
+ *
+ */
 public class MySQLProduktBatchKomponentDAO implements ProduktBatchKompDAO {
 
 	@Override
