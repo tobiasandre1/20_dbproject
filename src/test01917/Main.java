@@ -25,6 +25,7 @@ public class Main {
 	}
 	
 	private static void testOPR(){
+		System.out.println("__________________________________________");
 		System.out.println("Operatoer nummer 3:");
 		MySQLOperatoerDAO opr = new MySQLOperatoerDAO();
 		try { System.out.println(opr.getOperatoer(3)); }
@@ -33,7 +34,10 @@ public class Main {
 		System.out.println("Indsaettelse af ny operatoer med opr_id =  4");
 		OperatoerDTO oprDTO = new OperatoerDTO(4,"Don Juan","DJ","000000-0000","iloveyou");
 		try { opr.createOperatoer(oprDTO); }
-		catch (DALException e) { System.out.println(e.getMessage()); }	
+		catch (DALException e) { System.out.println(e.getMessage()); }
+		//Will give an SQL exception ^
+		//This is because previous tests have inserted an operatoer 
+		//with the ID 4 and we cannot have duplicate primary keys.
 		
 		System.out.println("Operatoer nummer 4:");
 		try { System.out.println(opr.getOperatoer(4)); }
@@ -55,9 +59,13 @@ public class Main {
 		System.out.println("Operatoer nummer 5:");
 		try { System.out.println(opr.getOperatoer(5)); }
 		catch (DALException e) { System.out.println(e.getMessage()); }
+		
+		System.out.println("");
 	}
 	
 	private static void testPB(){
+		System.out.println("__________________________________________");
+		
 		System.out.println("Produktbatch nummer 2:");
 		MySQLProduktBatchDAO produktbatch = new MySQLProduktBatchDAO();
 		try { System.out.println(produktbatch.getProduktBatch(2)); }
