@@ -6,7 +6,7 @@ import daointerfaces01917.DALException;
 import daointerfaces01917.RaavareBatchDAO;
 import dto01917.RaavareBatchDTO;
 
-public class MYSQLRaavareBatchDAO implements RaavareBatchDAO {
+public class MySQLRaavareBatchDAO implements RaavareBatchDAO {
 
 	@Override
 	public RaavareBatchDTO getRaavareBatch(int rbId) throws DALException {

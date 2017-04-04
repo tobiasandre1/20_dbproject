@@ -6,7 +6,7 @@ import daointerfaces01917.DALException;
 import daointerfaces01917.ReceptKompDAO;
 import dto01917.ReceptKompDTO;
 
-public class MYSQLReceptKomponentDAO implements ReceptKompDAO {
+public class MySQLReceptKomponentDAO implements ReceptKompDAO {
 
 	@Override
 	public ReceptKompDTO getReceptKomp(int receptId, int raavareId) throws DALException {

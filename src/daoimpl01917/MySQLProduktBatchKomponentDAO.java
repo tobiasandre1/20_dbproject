@@ -6,7 +6,7 @@ import daointerfaces01917.DALException;
 import daointerfaces01917.ProduktBatchKompDAO;
 import dto01917.ProduktBatchKompDTO;
 
-public class MYSQLProduktBatchKomponentDAO implements ProduktBatchKompDAO {
+public class MySQLProduktBatchKomponentDAO implements ProduktBatchKompDAO {
 
 	@Override
 	public ProduktBatchKompDTO getProduktBatchKomp(int pbId, int rbId) throws DALException {

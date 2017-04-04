@@ -6,7 +6,7 @@ import daointerfaces01917.DALException;
 import daointerfaces01917.RaavareDAO;
 import dto01917.RaavareDTO;
 
-public class MYSQLRaavareDAO implements RaavareDAO {
+public class MySQLRaavareDAO implements RaavareDAO {
 
 	@Override
 	public RaavareDTO getRaavare(int raavareId) throws DALException {

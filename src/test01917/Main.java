@@ -1,6 +1,7 @@
 package test01917;
 
 import daoimpl01917.MySQLOperatoerDAO;
+import daoimpl01917.MySQLProduktBatchDAO;
 import daointerfaces01917.DALException;
 import dto01917.OperatoerDTO;
 
@@ -16,6 +17,14 @@ public class Main {
 		catch (ClassNotFoundException e) { e.printStackTrace(); }
 		catch (SQLException e) { e.printStackTrace(); }
 		
+		testOPR(); //Operatoer test
+		testPB(); //ProduktBatch test
+		
+		//TODO test remaining DAO classes
+		
+	}
+	
+	private static void testOPR(){
 		System.out.println("Operatoer nummer 3:");
 		MySQLOperatoerDAO opr = new MySQLOperatoerDAO();
 		try { System.out.println(opr.getOperatoer(3)); }
@@ -46,8 +55,12 @@ public class Main {
 		System.out.println("Operatoer nummer 5:");
 		try { System.out.println(opr.getOperatoer(5)); }
 		catch (DALException e) { System.out.println(e.getMessage()); }
-		
-		//TODO test remaining DAO classes
-		
+	}
+	
+	private static void testPB(){
+		System.out.println("Produktbatch nummer 2:");
+		MySQLProduktBatchDAO produktbatch = new MySQLProduktBatchDAO();
+		try { System.out.println(produktbatch.getProduktBatch(2)); }
+		catch (DALException e) { System.out.println(e.getMessage()); }
 	}
 }
