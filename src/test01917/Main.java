@@ -18,10 +18,13 @@ public class Main {
 		catch (ClassNotFoundException e) { e.printStackTrace(); }
 		catch (SQLException e) { e.printStackTrace(); }
 		
-		testOPR(); //Operatoer test
-		testPB(); //ProduktBatch test
-		
-		//TODO test remaining DAO classes
+		testOPR(); 	//Operatoer test
+		testPB(); 	//ProduktBatch test
+		testPBK(); 	//ProduktBatchKomponent test - not implemented
+		testR();	//Recept test - not implemented
+		testRK();	//ReceptKomponent test - not implemented
+		testRB(); 	//RaavareBatch test - not implemented
+		testRBK();	//RaavareBatchKomponent test - not implemented
 		
 	}
 	
@@ -107,5 +110,35 @@ public class Main {
 		try { System.out.println(produktbatch.getProduktBatch(7)); }
 		catch (DALException e) { System.out.println(e.getMessage()); }
 		
+	}
+	
+	private static void testPBK(){
+		//Produkt batch komponent
+		
+		//TODO implement test
+	}
+	
+	private static void testR(){
+		//Recept
+		
+		//TODO implement test
+	}
+	
+	private static void testRK(){
+		//Recept komponent
+		
+		//TODO implement test
+	}
+	
+	private static void testRB(){
+		//Raavare batch
+		
+		//TODO implement test
+	}
+	
+	private static void testRBK(){
+		//Raavare batch komponent
+		
+		//TODO implement test
 	}
 }
