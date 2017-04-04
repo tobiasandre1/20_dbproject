@@ -45,7 +45,9 @@ public class Main {
 		
 		System.out.println("Operatoer nummer 5:");
 		try { System.out.println(opr.getOperatoer(5)); }
-		catch (DALException e) { System.out.println(e.getMessage()); }		
+		catch (DALException e) { System.out.println(e.getMessage()); }
+		
+		//TODO test remaining DAO classes
 		
 	}
 }
