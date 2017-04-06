@@ -2,9 +2,11 @@ package test01917;
 
 import daoimpl01917.MySQLOperatoerDAO;
 import daoimpl01917.MySQLProduktBatchDAO;
+import daoimpl01917.MySQLRaavareDAO;
 import daointerfaces01917.DALException;
 import dto01917.OperatoerDTO;
 import dto01917.ProduktBatchDTO;
+import dto01917.RaavareDTO;
 
 import java.sql.SQLException;
 
@@ -18,13 +20,13 @@ public class Main {
 		catch (ClassNotFoundException e) { e.printStackTrace(); }
 		catch (SQLException e) { e.printStackTrace(); }
 		
-		testOPR(); 	//Operatoer test
-		testPB(); 	//ProduktBatch test
+		//testOPR(); 	//Operatoer test
+		//testPB(); 	//ProduktBatch test
 		testPBK(); 	//ProduktBatchKomponent test - not implemented
 		testR();	//Recept test - not implemented
 		testRK();	//ReceptKomponent test - not implemented
 		testRB(); 	//RaavareBatch test - not implemented
-		testRBK();	//RaavareBatchKomponent test - not implemented
+		testRaa();	//Raavare test - not implemented
 		
 	}
 	
@@ -136,9 +138,46 @@ public class Main {
 		//TODO implement test
 	}
 	
-	private static void testRBK(){
+	private static void testRaa(){
 		//Raavare batch komponent
 		
-		//TODO implement test
+System.out.println("__________________________________________");
+		
+		MySQLRaavareDAO raa = new MySQLRaavareDAO();
+		
+		System.out.println("Raavare nummer 3:");
+		try { System.out.println(raa.getRaavare(3)); }
+		catch (DALException e) { System.out.println(e.getMessage()); }
+		
+		System.out.println("Indsaettelse af ny raavare med raavareid =  8");
+		RaavareDTO raaDTO = new RaavareDTO(8,"Liquid Magic","Hansi Hinterseer");
+		try { raa.createRaavare(raaDTO); }
+		catch (DALException e) { System.out.println(e.getMessage()); }
+		//Will give an SQL exception ^
+		//This is because previous tests have inserted an operatoer 
+		//with the ID 4 and we cannot have duplicate primary keys.
+		
+		System.out.println("Raavare nummer 8:");
+		try { System.out.println(raa.getRaavare(8)); }
+		catch (DALException e) { System.out.println(e.getMessage()); }
+		
+		System.out.println("Opdatering af leverandør for råvare nr. 8");
+		raaDTO.setLeverandoer("Hansi H. Junior");
+		try { raa.updateRaavare(raaDTO); }
+		catch (DALException e) { System.out.println(e.getMessage()); }
+		
+		System.out.println("Raavare nummer 8:");
+		try { System.out.println(raa.getRaavare(8)); }
+		catch (DALException e) { System.out.println(e.getMessage()); }
+		
+		System.out.println("Alle raavarer:");
+		try { System.out.println(raa.getRaavareList()); }
+		catch (DALException e) { System.out.println(e.getMessage()); }
+		
+		System.out.println("Raavare nummer 9:");
+		try { System.out.println(raa.getRaavare(9)); }
+		catch (DALException e) { System.out.println(e.getMessage()); }
+		
+		System.out.println("");
 	}
 }
