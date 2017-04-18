@@ -1,0 +1,2 @@
+1=SELECT * FROM operatoer WHERE opr_id = ?;
+2=BOOBIES;

@@ -7,11 +7,11 @@ import java.util.Properties;
 
 public class SQLMapper {
 
-	public String getStatement(int i, String filename){
+	public static String getStatement(int i){
 		
 		Properties props = new Properties();
 		try {
-			File file = new File(filename);
+			File file = new File("SQL.txt");
 			FileInputStream in = new FileInputStream(file);
 			props.load(in);
 			String res = props.getProperty(Integer.toString(i));
@@ -21,5 +21,4 @@ public class SQLMapper {
 			throw new IllegalStateException("Unable to load properties");
 		}
 	}
-	
 }
