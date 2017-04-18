@@ -1,0 +1,2 @@
+1=SELECT * FROM operatoer WHERE opr_id = ?;
+2=INSERT INTO operatoer(opr_id, opr_navn, ini, cpr, password) VALUES (?,?,?,?,?); 
