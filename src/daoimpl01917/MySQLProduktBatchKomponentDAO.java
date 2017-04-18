@@ -42,7 +42,7 @@ public class MySQLProduktBatchKomponentDAO implements ProduktBatchKompDAO {
 		{
 			while (rs.next()) 
 			{
-				list.add(new ProduktBatchKompDTO (rs.getInt("pb_id"), rs.getInt("rb_id"), rs.getDouble("tara"), rs.getDouble("netto"), rs.getInt("opr_id"));
+				list.add(new ProduktBatchKompDTO (rs.getInt("pb_id"), rs.getInt("rb_id"), rs.getDouble("tara"), rs.getDouble("netto"), rs.getInt("opr_id")));
 			}
 		}
 		catch (SQLException e) { throw new DALException(e); }
