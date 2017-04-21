@@ -7,7 +7,6 @@ import java.util.ArrayList;
 
 import daointerfaces01917.DALException;
 import daointerfaces01917.ProduktBatchKompDAO;
-import dto01917.ProduktBatchDTO;
 import dto01917.ProduktBatchKompDTO;
 import connector01917.Connector;
 import connector01917.SQLMapper;
@@ -40,7 +39,9 @@ public class MySQLProduktBatchKomponentDAO implements ProduktBatchKompDAO {
 	public List<ProduktBatchKompDTO> getProduktBatchKompList(int pbId) throws DALException {
 		
 		List<ProduktBatchKompDTO> list = new ArrayList<ProduktBatchKompDTO>();
-		ResultSet rs = Connector.doQuery(SQLMapper.getStatement("pb_komponent_SELECT_ALL"));
+		String statement = SQLMapper.getStatement("pb_komponent_SELECT_ALL");
+		statement = SQLMapper.insertValuesIntoString(statement, new String[]{Integer.toString(pbId)});
+		ResultSet rs = Connector.doQuery(statement);
 		
 		try
 		{
