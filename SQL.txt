@@ -3,10 +3,35 @@
 opr_SELECT						= SELECT * FROM operatoer WHERE opr_id = ?;
 pb_SELECT 						= SELECT * FROM produktbatch WHERE pb_id = ?;
 pb_komponent_SELECT 			= SELECT * FROM produktbatchkomponent WHERE pb_id = ? AND rb_id = ?; 
+rec_SELECT						= SELECT * FROM recept WHERE recept_id = ?;
+rec_komponent_SELECT			= SELECT * FROM receptkomponent WHERE recept_id = ? AND raavare_id = ?;
+rab_SELECT						= SELECT * FROM raavarebatch WHERE rb_id = ?;
+ra_SELECT						= SELECT * FROM raavare WHERE raavare_id = ?;
 
 
 opr_SELECT_ALL					= SELECT * FROM operatoer;
+pb_SELECT_ALL					= SELECT * FROM produktbatch;
+pb_komponent_SELECT_ALL			= SELECT * FROM produktbatchkomponent;
+rec_SELECT_ALL					= SELECT * FROM recept;
+rec_komponent_SELECT_ALL		= SELECT * FROM receptkomponent;
+rab_SELECT_ALL					= SELECT * FROM raavarebatch;
+ra_SELECT_ALL					= SELECT * FROM raavare;
+
+
 
 opr_INSERT						= INSERT INTO operatoer(opr_id, opr_navn, ini, cpr, password) VALUES (?, '?', '?', '?', '?');
+pb_SELECT_ALL					= INSERT INTO produktbatch(pb_id, status, recept_id) VALUES (?, '?', ?);
+pb_komponent_SELECT_ALL			= INSERT INTO produktbatchkomponent(pb_id, rb_id, tara, netto, opr_id) VALUES (?, ?, ?, ?, ?);
+rec_SELECT_ALL					= INSERT INTO recept(recept_id, recept_navn) VALUES (?, '?');
+rec_komponent_SELECT_ALL		= INSERT INTO receptkomponent(recept_id, raavare_id, nom_netto, tolerance) VALUES (?, ?, ?, ?);
+rab_SELECT_ALL					= INSERT INTO raavarebatch(rb_id, raavare_id, maengde) VALUES (?, ?, ?);
+ra_SELECT_ALL					= INSERT INTO raavare(raavare_id, raavare_navn, leverandoer) VALUES (?, '?', '?');
+
 
 opr_UPDATE						= UPDATE operatoer SET opr_navn = '?', ini = '?', cpr = '?', password = '?' WHERE opr_id = ?;
+pb_UPDATE						= UPDATE produktbatch SET status = ?, recept_id = ? WHERE pb_id = ?;
+pb_komponent_UPDATE				= UPDATE produktbatchkomponent SET tara = ?, netto = ?, opr_id = ? WHERE recept_id = ? AND raavare_id = ?;
+rec_UPDATE						= UPDATE recept SET recept_navn = '?' WHERE recept_id = ?;
+rec_komponent_UPDATE			= UPDATE receptkomponent SET nom_netto = ?, tolerance = ? WHERE recept_id = ? AND raavare_id = ?;
+rab_UPDATE						= UPDATE raavarebatch SET raavare_id = ?, maengde = ? WHERE rb_id = ?;
+ra_UPDATE						= UPDATE raavare SET raavare_navn = '?', leverandoer = '?' WHERE raavare_id = ?;
