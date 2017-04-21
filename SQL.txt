@@ -1,2 +1,12 @@
-1=SELECT * FROM operatoer WHERE opr_id = ?;
-2=BOOBIES;
+1 = TEST: -> ? <-;
+
+opr_SELECT						= SELECT * FROM operatoer WHERE opr_id = ?;
+pb_SELECT 						= SELECT * FROM produktbatch WHERE pb_id = ?;
+pb_komponent_SELECT 			= SELECT * FROM produktbatchkomponent WHERE pb_id = ? AND rb_id = ?; 
+
+
+opr_SELECT_ALL					= SELECT * FROM operatoer;
+
+opr_INSERT						= INSERT INTO operatoer(opr_id, opr_navn, ini, cpr, password) VALUES (?, '?', '?', '?', '?');
+
+opr_UPDATE						= UPDATE operatoer SET opr_navn = '?', ini = '?', cpr = '?', password = '?' WHERE opr_id = ?;

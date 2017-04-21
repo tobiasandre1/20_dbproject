@@ -39,4 +39,19 @@ public class SQLMapper {
 			throw new IllegalStateException("Unable to load properties");
 		}
 	}
+	
+	public static String insertValuesIntoString(String statement, String[] values){
+		for(int i=0; i<values.length; i++){
+			statement = statement.replaceFirst("[?]", values[i]);
+		}
+		return statement;
+		
+		/* Test:
+		 *
+		 * String stm = SQLMapper.getStatement(1);
+		 * stm = SQLMapper.insertValuesIntoString(stm, new String[]{"WELL"});
+		 * System.out.println(stm);
+		 */
+	}
+	
 }

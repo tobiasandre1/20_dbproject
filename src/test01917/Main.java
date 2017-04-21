@@ -1,6 +1,6 @@
 package test01917;
 
-import daoimpl01917.MySQLOperatoerDAO;
+import daoimpl01917_version2.MySQLOperatoerDAO;
 import daoimpl01917.MySQLProduktBatchDAO;
 import daoimpl01917.MySQLRaavareDAO;
 import daointerfaces01917.DALException;
@@ -20,13 +20,15 @@ public class Main {
 		catch (ClassNotFoundException e) { e.printStackTrace(); }
 		catch (SQLException e) { e.printStackTrace(); }
 		
-		//testOPR(); 	//Operatoer test
+		testOPR(); 	//Operatoer test
+		/*
 		//testPB(); 	//ProduktBatch test
 		testPBK(); 	//ProduktBatchKomponent test - not implemented
 		testR();	//Recept test - not implemented
 		testRK();	//ReceptKomponent test - not implemented
 		testRB(); 	//RaavareBatch test - not implemented
 		testRaa();	//Raavare test - not implemented
+		*/
 		
 	}
 	
