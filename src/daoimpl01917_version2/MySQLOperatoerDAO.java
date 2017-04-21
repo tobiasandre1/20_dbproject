@@ -17,7 +17,8 @@ public class MySQLOperatoerDAO implements OperatoerDAO {
 	public OperatoerDTO getOperatoer(int oprId) throws DALException {
 		
 		String statement = SQLMapper.getStatement("opr_SELECT");
-		statement = SQLMapper.insertValuesIntoString(statement, new String[]{Integer.toString(oprId)});
+		String[] values = new String[]{Integer.toString(oprId)};
+		statement = SQLMapper.insertValuesIntoString(statement, values);
 		System.out.println("Query: "+statement);
 		ResultSet rs = Connector.doQuery(statement);
 		
