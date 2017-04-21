@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import connector01917.Connector;
+import connector01917.SQLMapper;
 import daointerfaces01917.DALException;
 import daointerfaces01917.ProduktBatchDAO;
 import dto01917.ProduktBatchDTO;
@@ -27,7 +28,11 @@ public class MySQLProduktBatchDAO implements ProduktBatchDAO {
 		 * 
 		 * We can store the result of a query in the class ResultSet
 		 */
-		ResultSet rs = Connector.doQuery("SELECT * FROM produktbatch WHERE pb_id = " + pbId);
+		String statement = SQLMapper.getStatement("pb_SELECT");
+		String[] values = new String[]{Integer.toString(pbId)};
+		statement = SQLMapper.insertValuesIntoString(statement, values);
+		System.out.println("Query: "+statement);
+		ResultSet rs = Connector.doQuery(statement);
 	    //Result is stored ^
 		try {
 	    	if (!rs.first()) throw new DALException("Produkt batch " + pbId + " findes ikke");
@@ -50,7 +55,7 @@ public class MySQLProduktBatchDAO implements ProduktBatchDAO {
 		 * Our query selects all present elements in the table.
 		 */
 		List<ProduktBatchDTO> list = new ArrayList<ProduktBatchDTO>();
-		ResultSet rs = Connector.doQuery("SELECT * FROM produktbatch");
+		ResultSet rs = Connector.doQuery(SQLMapper.getStatement("pb_SELECT_ALL"));
 		try
 		{
 			while (rs.next()) 
@@ -64,24 +69,23 @@ public class MySQLProduktBatchDAO implements ProduktBatchDAO {
 
 	@Override
 	public void createProduktBatch(ProduktBatchDTO produktbatch) throws DALException {
-		//We do an insert query with the data in our DTO.
-		Connector.doUpdate(
-				"INSERT INTO produktbatch(pb_id, status, recept_id) VALUES " +
-				"(" + produktbatch.getPbId() + ", '" + produktbatch.getStatus() + 
-				"', '" + produktbatch.getReceptId() + "')"
-		); //End of insert
+		String statement = SQLMapper.getStatement("pb_INSERT");
+		String[] values = new String[]{Integer.toString(produktbatch.getPbId()), Integer.toString(produktbatch.getStatus()), Integer.toString(produktbatch.getReceptId()) };
+		statement = SQLMapper.insertValuesIntoString(statement, values);
+		System.out.println(statement);
+		
+		Connector.doUpdate(statement);
 	}
 
 
 	@Override
 	public void updateProduktBatch(ProduktBatchDTO produktbatch) throws DALException {
-		//We do an update query in the same way as our create method.
-		Connector.doUpdate(
-				"UPDATE produktbatch SET pb_id = " + produktbatch.getPbId()
-				+ ", status = " + produktbatch.getStatus()
-				+ ", recept_id = " + produktbatch.getReceptId()
-				+ " WHERE pb_id = " + produktbatch.getPbId()
-		); //End of update
+		String statement = SQLMapper.getStatement("pb_UPDATE");
+		String[] values = new String[]{Integer.toString(produktbatch.getStatus()), Integer.toString(produktbatch.getReceptId()), Integer.toString(produktbatch.getPbId()) };
+		statement = SQLMapper.insertValuesIntoString(statement, values);
+		System.out.println(statement);
+		
+		Connector.doUpdate(statement);
 	}
 
 }
