@@ -10,6 +10,7 @@ import daointerfaces01917.ProduktBatchKompDAO;
 import dto01917.ProduktBatchDTO;
 import dto01917.ProduktBatchKompDTO;
 import connector01917.Connector;
+import connector01917.SQLMapper;
 
 /**
  * @author Gustav
@@ -20,8 +21,11 @@ public class MySQLProduktBatchKomponentDAO implements ProduktBatchKompDAO {
 	@Override
 	public ProduktBatchKompDTO getProduktBatchKomp(int pbId, int rbId) throws DALException {
 
-		ResultSet rs = Connector.doQuery("SELECT * FROM produktbatchkomponent "
-											+ "WHERE pb_id =" + pbId + "AND rb_id =" + rbId);
+		String statement = SQLMapper.getStatement("pb_komponent_SELECT");
+		String[] values = new String[]{Integer.toString(pbId), Integer.toString(rbId)};
+		statement = SQLMapper.insertValuesIntoString(statement, values);
+		System.out.println("Query: "+statement);
+		ResultSet rs = Connector.doQuery(statement);
 		
 		try {
 	    	if (!rs.first()) throw new DALException("Produkt batch komponent med pbId = " + pbId +" Eller rbId = " + rbId + " findes ikke");
@@ -36,7 +40,7 @@ public class MySQLProduktBatchKomponentDAO implements ProduktBatchKompDAO {
 	public List<ProduktBatchKompDTO> getProduktBatchKompList(int pbId) throws DALException {
 		
 		List<ProduktBatchKompDTO> list = new ArrayList<ProduktBatchKompDTO>();
-		ResultSet rs = Connector.doQuery("SELECT * FROM produktbatchkomponent WHERE pb_id =" + pbId);
+		ResultSet rs = Connector.doQuery(SQLMapper.getStatement("pb_komponent_SELECT_ALL"));
 		
 		try
 		{
@@ -70,26 +74,34 @@ public class MySQLProduktBatchKomponentDAO implements ProduktBatchKompDAO {
 	@Override
 	public void createProduktBatchKomp(ProduktBatchKompDTO produktbatchkomponent) throws DALException {
 		
-		Connector.doUpdate(
-				"INSERT INTO produktbatchkomponent(pb_id, rb_id, tara, netto, opr_id,) VALUES " +
-				"(" + produktbatchkomponent.getPbId() + ", '" + produktbatchkomponent.getRbId() + 
-				"', '" + produktbatchkomponent.getTara() + ", '" +produktbatchkomponent.getNetto() +
-				"', '" + produktbatchkomponent.getOprId() + "')"
-		);
+		String statement = SQLMapper.getStatement("pb_komponent_INSERT");
+		String[] values = new String[]{
+									Integer.toString(produktbatchkomponent.getPbId()), 
+									Integer.toString(produktbatchkomponent.getRbId()),
+									Double.toString(produktbatchkomponent.getTara()),
+									Double.toString(produktbatchkomponent.getNetto()),
+									Integer.toString(produktbatchkomponent.getOprId())
+						};
+		statement = SQLMapper.insertValuesIntoString(statement, values);
+		System.out.println(statement);
+		Connector.doUpdate(statement);
 		
 	}
 
 	@Override
 	public void updateProduktBatchKomp(ProduktBatchKompDTO produktbatchkomponent) throws DALException {
 	
-		Connector.doUpdate(
-				"UPDATE produktbatchkomponent SET pb_id = " + produktbatchkomponent.getPbId()
-				+ ", rb_id = " + produktbatchkomponent.getRbId()
-				+ ", tara = " + produktbatchkomponent.getTara()
-				+ ", netto =" + produktbatchkomponent.getNetto()
-				+ ", opr_id =" + produktbatchkomponent.getOprId()
-				+ " WHERE pb_id = " + produktbatchkomponent.getPbId() + "AND rb_id =" + produktbatchkomponent.getRbId()
-		);
+		String statement = SQLMapper.getStatement("pb_komponent_UPDATE");
+		String[] values = new String[]{
+									Double.toString(produktbatchkomponent.getTara()),
+									Double.toString(produktbatchkomponent.getNetto()),
+									Integer.toString(produktbatchkomponent.getOprId()),
+									Integer.toString(produktbatchkomponent.getPbId()), 
+									Integer.toString(produktbatchkomponent.getRbId())
+						};
+		statement = SQLMapper.insertValuesIntoString(statement, values);
+		System.out.println(statement);
+		Connector.doUpdate(statement);
 
 	}
 
