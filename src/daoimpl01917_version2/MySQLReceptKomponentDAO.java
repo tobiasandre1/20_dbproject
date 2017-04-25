@@ -9,6 +9,7 @@ import connector01917.Connector;
 import connector01917.SQLMapper;
 import daointerfaces01917.DALException;
 import daointerfaces01917.ReceptKompDAO;
+import dto01917.OperatoerDTO;
 import dto01917.ReceptKompDTO;
 
 /**
@@ -51,19 +52,46 @@ public class MySQLReceptKomponentDAO implements ReceptKompDAO {
 
 	@Override
 	public List<ReceptKompDTO> getReceptKompList() throws DALException {
-		// TODO Auto-generated method stub
-		return null;
+		List<ReceptKompDTO> list = new ArrayList<ReceptKompDTO>();
+		ResultSet rs = Connector.doQuery(SQLMapper.getStatement("rec_komponent_SELECT_ALL"));
+		try
+		{
+			while (rs.next()) 
+			{
+				list.add(new ReceptKompDTO(rs.getInt("recept_id"), rs.getInt("raavare_id"), rs.getDouble("nom_netto"), rs.getDouble("tolerance")));
+			}
+		}
+		catch (SQLException e) { throw new DALException(e); }
+		return list;
 	}
 
 	@Override
 	public void createReceptKomp(ReceptKompDTO receptkomponent) throws DALException {
-		// TODO Auto-generated method stub
+		String statement = SQLMapper.getStatement("rec_komponent_INSERT");
+		String[] values = new String[]{
+				Integer.toString(receptkomponent.getReceptId()), 
+				Integer.toString(receptkomponent.getRaavareId()), 
+				Double.toString(receptkomponent.getNomNetto()), 
+				Double.toString(receptkomponent.getTolerance())
+			};
+		statement = SQLMapper.insertValuesIntoString(statement, values);
+		System.out.println(statement);
+		Connector.doUpdate(statement);
 
 	}
 
 	@Override
 	public void updateReceptKomp(ReceptKompDTO receptkomponent) throws DALException {
-		// TODO Auto-generated method stub
+		String statement = SQLMapper.getStatement("rec_komponent_UPDATE");
+		String[] values = new String[]{
+				Double.toString(receptkomponent.getNomNetto()), 
+				Double.toString(receptkomponent.getTolerance()),
+				Integer.toString(receptkomponent.getReceptId()), 
+				Integer.toString(receptkomponent.getRaavareId())
+			};
+		statement = SQLMapper.insertValuesIntoString(statement, values);
+		System.out.println(statement);
+		Connector.doUpdate(statement);
 
 	}
 
