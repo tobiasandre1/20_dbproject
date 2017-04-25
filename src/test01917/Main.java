@@ -1,4 +1,5 @@
-package test01917;
+package 
+test01917;
 
 
 import daointerfaces01917.DALException;
@@ -34,9 +35,9 @@ public class Main {
 		//testOPR(); 	//Operatoer test
 		
 		//testPB(); 		//ProduktBatch test
-		testPBK(); 	//ProduktBatchKomponent test - not implemented
-		/*testRec();		//Recept test - not implemented
-		testRecK();		//ReceptKomponent test - not implemented
+//		testPBK(); 	//ProduktBatchKomponent test - not implemented
+		testRec();		//Recept test - not implemented
+		/*testRecK();		//ReceptKomponent test - not implemented
 		testRaaBat();	//RaavareBatch test - not implemented
 		testRaa();		//Raavare test - not implemented
 		*/
@@ -209,7 +210,7 @@ public class Main {
 		//Test af updateRecept()
 		System.out.println();
 		System.out.println("Opdatering af recept med id 4. Sætter recept_navn = ananas_pizza");
-		ReceptDTO receptDTO2 = new ReceptDTO(4, "ananas pizza");
+		ReceptDTO receptDTO2 = new ReceptDTO(4, "ananas_pizza");
 		try { recept.updateRecept(receptDTO2); }
 		catch (DALException e) {System.out.println(e.getMessage()); }
 		
