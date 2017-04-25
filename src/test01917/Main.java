@@ -200,8 +200,10 @@ public class Main {
 		//Recept komponent
 		
 		MySQLReceptKomponentDAO RK = new MySQLReceptKomponentDAO();
-		List<ReceptKompDTO> RKList = RK.getReceptKompList();
-		ReceptKompDTO TestRK = new ReceptKompDTO(4, 8, 20, 0.2)
+		List<ReceptKompDTO> RKList;
+		try {RKList = RK.getReceptKompList();} 
+		catch (DALException e) {e.getMessage();}
+		ReceptKompDTO TestRK = new ReceptKompDTO(4, 8, 20, 0.2);
 		
 		//DONE test getReceptKomp(receptId, raavareId)
 		System.out.println("Recept id = 1, Raavare id = 1: ");
