@@ -185,12 +185,12 @@ public class Main {
 		
 		//Raavare batch
 		
-		//TODO test getRaavareBatch(int rbId)
+		//DONE test getRaavareBatch(int rbId)
 		System.out.println("Raavarebatch 3: ");
 		try { System.out.println(raavarebatch.getRaavareBatch(3)); }
 		catch (DALException e) { System.out.println(e.getMessage()); }
 		
-		//TODO test getRaavareBatchList()
+		//DONE test getRaavareBatchList()
 		System.out.println("Alle raavarebatches:");
 		try {
 			raavarelist = raavarebatch.getRaavareBatchList();
@@ -200,7 +200,7 @@ public class Main {
 			}
 		catch (DALException e) { System.out.println(e.getMessage()); }
 		
-		//TODO test getRaavareBatchList(int raavareId)
+		//DONE test getRaavareBatchList(int raavareId)
 		System.out.println("Alle raavarebatches med raavare 5:");
 		try {
 			raavarelist = raavarebatch.getRaavareBatchList(5);
@@ -210,7 +210,7 @@ public class Main {
 			}
 		catch (DALException e) { System.out.println(e.getMessage()); }
 		
-		//TODO test createRaavareBatch(RaavareBatchDTO raavarebatch)
+		//DONE test createRaavareBatch(RaavareBatchDTO raavarebatch)
 		System.out.println("Indsaettelse af ny raavarebatch med rb_id = 8");
 		try { raavarebatch.createRaavareBatch(raa); }
 		catch (DALException e) { System.out.println(e.getMessage()); }
@@ -219,7 +219,7 @@ public class Main {
 		try { System.out.println(raavarebatch.getRaavareBatch(8)); }
 		catch (DALException e) { System.out.println(e.getMessage()); }
 		
-		//TODO test updateRaavareBatch(RaavareBatchDTO raavarebatch)
+		//DONE test updateRaavareBatch(RaavareBatchDTO raavarebatch)
 		System.out.println("Opdatering af raavarebatch med rb_id = 8");
 		raa.setMaengde(1337);
 		try { raavarebatch.updateRaavareBatch(raa); }
