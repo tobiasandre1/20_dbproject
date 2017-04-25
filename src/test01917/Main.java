@@ -199,17 +199,57 @@ public class Main {
 	private static void testRecKomp(){
 		//Recept komponent
 		
-		//TODO test getReceptKomp(receptId, raavareId)
+		MySQLReceptKomponentDAO RK = new MySQLReceptKomponentDAO();
+		List<ReceptKompDTO> RKList = RK.getReceptKompList();
+		ReceptKompDTO TestRK = new ReceptKompDTO(4, 8, 20, 0.2)
 		
-		//TODO test getReceptKompList(raavareId)
+		//DONE test getReceptKomp(receptId, raavareId)
+		System.out.println("Recept id = 1, Raavare id = 1: ");
+		try{RK.getReceptKomp(1, 1);}
+		catch(DALException e){e.getMessage();}
 		
-		//TODO test getReceptKompList()
+		//DONE test getReceptKompList(raavareId)
+		System.out.println("Alle Receptkomponenter med id 3:");
+		try {
+			RKList = RK.getReceptKompList(3);
+				for (int i = 0; i < RKList.size(); i++){
+					System.out.println(RKList.get(i));
+				}
+			}
+		catch(DALException e){e.getMessage();}
+		
+		//DONE test getReceptKompList()
 				
-		//TODO test createReceptKomp(ReceptDTO)
+		System.out.println("Alle Receptkomponenter:");
+		try {
+			RKList = RK.getReceptKompList();
+				for (int i = 0; i < RKList.size(); i++){
+					System.out.println(RKList.get(i));
+				}
+			}
+		catch(DALException e){e.getMessage();}
+		
+		//DONE test createReceptKomp(ReceptDTO)
+		System.out.println("Ny Receptkomonent med recept id = 4, raavare id = 8, nomnetto = 20, tolerance = 0.2");
+		try { RK.createReceptKomp(TestRK); }
+		catch (DALException e) { System.out.println(e.getMessage()); }
+		
+		System.out.println("Receptkomponent 4: ");
+		try { System.out.println(RK.getReceptKompList(4)); }
+		catch (DALException e) { System.out.println(e.getMessage()); }
 				
-		//TODO test updateReceptKomp(ReceptDTO)
+		//DONE test updateReceptKomp(ReceptDTO)
+		System.out.println("Opdatering af Receptkomponent med recept id = 1");
+		TestRK.setTolerance(1000);
+		try { RK.updateReceptKomp(TestRK); }
+		catch (DALException e) { System.out.println(e.getMessage()); }
+		
+		System.out.println("Receptkomponent 4: ");
+		try { System.out.println(RK.getReceptKompList(4)); }
+		catch (DALException e) { System.out.println(e.getMessage()); }
+		
 	}
-	
+
 	private static void testRaaBat(){
 		//Tobias
 		System.out.println("__________________________________________");
