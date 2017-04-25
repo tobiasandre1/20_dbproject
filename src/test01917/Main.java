@@ -20,6 +20,8 @@ import daoimpl01917_version2.MySQLRaavareBatchDAO;
 import daoimpl01917_version2.MySQLRaavareDAO;
 
 import java.sql.SQLException;
+import java.util.List;
+
 import connector01917.Connector;
 
 public class Main {
@@ -179,18 +181,53 @@ public class Main {
 		
 		RaavareBatchDAO raavarebatch = new MySQLRaavareBatchDAO();
 		RaavareBatchDTO raa = new RaavareBatchDTO(8, 8, 420);
+		List<RaavareBatchDTO> raavarelist;
 		
 		//Raavare batch
 		
 		//TODO test getRaavareBatch(int rbId)
+		System.out.println("Raavarebatch 3: ");
+		try { System.out.println(raavarebatch.getRaavareBatch(3)); }
+		catch (DALException e) { System.out.println(e.getMessage()); }
 		
 		//TODO test getRaavareBatchList()
+		System.out.println("Alle raavarebatches:");
+		try {
+			raavarelist = raavarebatch.getRaavareBatchList();
+			for(int i = 0; i<raavarelist.size(); i++){
+				System.out.println(raavarelist.get(i)); 
+				}
+			}
+		catch (DALException e) { System.out.println(e.getMessage()); }
 		
 		//TODO test getRaavareBatchList(int raavareId)
+		System.out.println("Alle raavarebatches med raavare 5:");
+		try {
+			raavarelist = raavarebatch.getRaavareBatchList(5);
+			for(int i = 0; i<raavarelist.size(); i++){
+				System.out.println(raavarelist.get(i)); 
+				}
+			}
+		catch (DALException e) { System.out.println(e.getMessage()); }
 		
 		//TODO test createRaavareBatch(RaavareBatchDTO raavarebatch)
+		System.out.println("Indsaettelse af ny raavarebatch med rb_id = 8");
+		try { raavarebatch.createRaavareBatch(raa); }
+		catch (DALException e) { System.out.println(e.getMessage()); }
+		
+		System.out.println("Raavarebatch 8: ");
+		try { System.out.println(raavarebatch.getRaavareBatch(8)); }
+		catch (DALException e) { System.out.println(e.getMessage()); }
 		
 		//TODO test updateRaavareBatch(RaavareBatchDTO raavarebatch)
+		System.out.println("Opdatering af raavarebatch med rb_id = 8");
+		raa.setMaengde(1337);
+		try { raavarebatch.updateRaavareBatch(raa); }
+		catch (DALException e) { System.out.println(e.getMessage()); }
+		
+		System.out.println("Raavarebatch 8: ");
+		try { System.out.println(raavarebatch.getRaavareBatch(8)); }
+		catch (DALException e) { System.out.println(e.getMessage()); }
 		
 		
 	}
