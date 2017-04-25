@@ -185,15 +185,39 @@ public class Main {
 	}
 	
 	private static void testRec(){
-		//Recept
+		ReceptDAO recept = new MySQLReceptDAO();
 		
-		//TODO test getRecept(receptId)
+		//Test af getRecept()
+		System.out.println();
+		System.out.println("Recept id 1:");
+		try { System.out.println(recept.getRecept(1)); }
+		catch (DALException e) { System.out.println(e.getMessage()); }
 		
-		//TODO test getReceptList()
+		//Test af getReceptList()
+		System.out.println();
+		System.out.println("Alle recepter:");
+		try { System.out.println(recept.getReceptList()); }
+		catch (DALException e) { System.out.println(e.getMessage()); }
 		
-		//TODO test createRecept(ReceptDTO)
+		//Test af createRecept()
+		System.out.println();
+		System.out.println("Indsættelse af nyt recept med: recept_id = 4 receptnavn = hawaii");
+		ReceptDTO receptDTO = new ReceptDTO(4, "hawaii");
+		try { recept.createRecept(receptDTO); }
+		catch (DALException e) {System.out.println(e.getMessage()); }
 		
-		//TODO test updateRecept(ReceptDTO)
+		//Test af updateRecept()
+		System.out.println();
+		System.out.println("Opdatering af recept med id 4. Sætter recept_navn = ananas_pizza");
+		ReceptDTO receptDTO2 = new ReceptDTO(4, "ananas pizza");
+		try { recept.updateRecept(receptDTO2); }
+		catch (DALException e) {System.out.println(e.getMessage()); }
+		
+		//Test om updateRecept har indsat korrekt
+		System.out.println();
+		System.out.println("Tester om recept id 4 er korrekt:");
+		try { System.out.println(recept.getRecept(4)); }
+		catch (DALException e) { System.out.println(e.getMessage()); }
 	}
 	
 	private static void testRecKomp(){
