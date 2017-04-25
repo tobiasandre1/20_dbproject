@@ -174,6 +174,7 @@ public class Main {
 	}
 	
 	private static void testRaaBat(){
+		//Tobias
 		System.out.println("__________________________________________");
 		
 		RaavareBatchDAO raavarebatch = new MySQLRaavareBatchDAO();
@@ -189,7 +190,7 @@ public class Main {
 		
 		//TODO test createRaavareBatch(RaavareBatchDTO raavarebatch)
 		
-		//TODO test updateRaavareBatch(RaavareBatchDTO raavarebatch) - Tobias
+		//TODO test updateRaavareBatch(RaavareBatchDTO raavarebatch)
 		
 		
 	}
