@@ -39,7 +39,7 @@ public class MySQLProduktBatchKomponentDAO implements ProduktBatchKompDAO {
 	public List<ProduktBatchKompDTO> getProduktBatchKompList(int pbId) throws DALException {
 		
 		List<ProduktBatchKompDTO> list = new ArrayList<ProduktBatchKompDTO>();
-		String statement = SQLMapper.getStatement("pb_komponent_SELECT_ALL");
+		String statement = SQLMapper.getStatement("pb_komponent_SELECT_ALL_rec_id");
 		statement = SQLMapper.insertValuesIntoString(statement, new String[]{Integer.toString(pbId)});
 		ResultSet rs = Connector.doQuery(statement);
 		
@@ -58,7 +58,8 @@ public class MySQLProduktBatchKomponentDAO implements ProduktBatchKompDAO {
 	public List<ProduktBatchKompDTO> getProduktBatchKompList() throws DALException {
 		
 		List<ProduktBatchKompDTO> list = new ArrayList<ProduktBatchKompDTO>();
-		ResultSet rs = Connector.doQuery("SELECT * FROM produktbatchkomponent");
+		String statement = SQLMapper.getStatement("pb_komponent_SELECT_ALL");
+		ResultSet rs = Connector.doQuery(statement);
 		
 		try
 		{

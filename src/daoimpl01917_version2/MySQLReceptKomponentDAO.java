@@ -9,7 +9,6 @@ import connector01917.Connector;
 import connector01917.SQLMapper;
 import daointerfaces01917.DALException;
 import daointerfaces01917.ReceptKompDAO;
-import dto01917.OperatoerDTO;
 import dto01917.ReceptKompDTO;
 
 /**
@@ -36,7 +35,7 @@ public class MySQLReceptKomponentDAO implements ReceptKompDAO {
 	@Override
 	public List<ReceptKompDTO> getReceptKompList(int receptId) throws DALException {
 		List<ReceptKompDTO> list = new ArrayList<ReceptKompDTO>();
-		String statement = SQLMapper.getStatement("rec_komponent_SELECT_ALL");
+		String statement = SQLMapper.getStatement("rec_komponent_SELECT_ALL_rec_id");
 		statement = SQLMapper.insertValuesIntoString(statement, new String[]{Integer.toString(receptId)});
 		ResultSet rs = Connector.doQuery(statement);
 		try

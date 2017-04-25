@@ -11,10 +11,13 @@ ra_SELECT						= SELECT * FROM raavare WHERE raavare_id = ?;
 
 opr_SELECT_ALL					= SELECT * FROM operatoer;
 pb_SELECT_ALL					= SELECT * FROM produktbatch;
-pb_komponent_SELECT_ALL			= SELECT * FROM produktbatchkomponent WHERE recept_id = ?;
+pb_komponent_SELECT_ALL			= SELECT * FROM produktbatchkomponent;
+pb_komponent_SELECT_ALL_rec_id	= SELECT * FROM produktbatchkomponent WHERE recept_id = ?;
 rec_SELECT_ALL					= SELECT * FROM recept;
 rec_komponent_SELECT_ALL		= SELECT * FROM receptkomponent;
+rec_komponent_SELECT_ALL_rec_id	= SELECT * FROM receptkomponent WHERE recept_id = ?;
 rab_SELECT_ALL					= SELECT * FROM raavarebatch;
+rab_SELECT_ALL_raavare_id		= SELECT * FROM raavarebatch WHERE raavare_id = ?;
 ra_SELECT_ALL					= SELECT * FROM raavare;
 
 
