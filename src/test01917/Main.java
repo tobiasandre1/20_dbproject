@@ -5,12 +5,18 @@ import daointerfaces01917.DALException;
 import daointerfaces01917.*;
 import dto01917.OperatoerDTO;
 import dto01917.ProduktBatchDTO;
+import dto01917.ProduktBatchKompDTO;
+import dto01917.ReceptDTO;
+import dto01917.ReceptKompDTO;
 import dto01917.RaavareBatchDTO;
 import dto01917.RaavareDTO;
 
 import daoimpl01917_version2.MySQLOperatoerDAO;
 import daoimpl01917_version2.MySQLProduktBatchDAO;
 import daoimpl01917_version2.MySQLProduktBatchKomponentDAO;
+import daoimpl01917_version2.MySQLReceptDAO;
+import daoimpl01917_version2.MySQLReceptKomponentDAO;
+import daoimpl01917_version2.MySQLRaavareBatchDAO;
 import daoimpl01917_version2.MySQLRaavareDAO;
 
 import java.sql.SQLException;
@@ -168,6 +174,11 @@ public class Main {
 	}
 	
 	private static void testRaaBat(){
+		System.out.println("__________________________________________");
+		
+		RaavareBatchDAO raavarebatch = new MySQLRaavareBatchDAO();
+		RaavareBatchDTO raa = new RaavareBatchDTO(8, 8, 420);
+		
 		//Raavare batch
 		
 		//TODO test getRaavareBatch(int rbId)
@@ -178,7 +189,9 @@ public class Main {
 		
 		//TODO test createRaavareBatch(RaavareBatchDTO raavarebatch)
 		
-		//TODO updateRaavareBatch(RaavareBatchDTO raavarebatch) - Tobias
+		//TODO test updateRaavareBatch(RaavareBatchDTO raavarebatch) - Tobias
+		
+		
 	}
 	
 	private static void testRaa(){
