@@ -11,18 +11,17 @@ import dto01917.ReceptKompDTO;
 import dto01917.RaavareBatchDTO;
 import dto01917.RaavareDTO;
 
-import daoimpl01917_version2.MySQLOperatoerDAO;
-import daoimpl01917_version2.MySQLProduktBatchDAO;
-import daoimpl01917_version2.MySQLProduktBatchKomponentDAO;
-import daoimpl01917_version2.MySQLReceptDAO;
-import daoimpl01917_version2.MySQLReceptKomponentDAO;
-import daoimpl01917_version2.MySQLRaavareBatchDAO;
-import daoimpl01917_version2.MySQLRaavareDAO;
-
 import java.sql.SQLException;
 import java.util.List;
 
 import connector01917.Connector;
+import daoimpl01917.MySQLOperatoerDAO;
+import daoimpl01917.MySQLProduktBatchDAO;
+import daoimpl01917.MySQLProduktBatchKomponentDAO;
+import daoimpl01917.MySQLRaavareBatchDAO;
+import daoimpl01917.MySQLRaavareDAO;
+import daoimpl01917.MySQLReceptDAO;
+import daoimpl01917.MySQLReceptKomponentDAO;
 
 public class Main {
 	public static void main(String[] args) {
