@@ -1,15 +1,19 @@
 package test01917;
 
-import daoimpl01917_version2.MySQLOperatoerDAO;
-import daoimpl01917_version2.MySQLProduktBatchDAO;
-import daoimpl01917_version2.MySQLRaavareDAO;
+
 import daointerfaces01917.DALException;
+import daointerfaces01917.*;
 import dto01917.OperatoerDTO;
 import dto01917.ProduktBatchDTO;
+import dto01917.RaavareBatchDTO;
 import dto01917.RaavareDTO;
 
-import java.sql.SQLException;
+import daoimpl01917_version2.MySQLOperatoerDAO;
+import daoimpl01917_version2.MySQLProduktBatchDAO;
+import daoimpl01917_version2.MySQLProduktBatchKomponentDAO;
+import daoimpl01917_version2.MySQLRaavareDAO;
 
+import java.sql.SQLException;
 import connector01917.Connector;
 
 public class Main {
@@ -22,12 +26,12 @@ public class Main {
 		
 		//testOPR(); 	//Operatoer test
 		
-		testPB(); 	//ProduktBatch test
-		/*testPBK(); 	//ProduktBatchKomponent test - not implemented
-		testR();	//Recept test - not implemented
-		testRK();	//ReceptKomponent test - not implemented
-		testRB(); 	//RaavareBatch test - not implemented
-		testRaa();	//Raavare test - not implemented
+		//testPB(); 		//ProduktBatch test
+		testPBK(); 	//ProduktBatchKomponent test - not implemented
+		/*testRec();		//Recept test - not implemented
+		testRecK();		//ReceptKomponent test - not implemented
+		testRaaBat();	//RaavareBatch test - not implemented
+		testRaa();		//Raavare test - not implemented
 		*/
 		
 	}
@@ -35,7 +39,7 @@ public class Main {
 	private static void testOPR(){
 		System.out.println("__________________________________________");
 		
-		MySQLOperatoerDAO opr = new MySQLOperatoerDAO();
+		OperatoerDAO opr = new MySQLOperatoerDAO();
 		
 		System.out.println("Operatoer nummer 3:");
 		try { System.out.println(opr.getOperatoer(3)); }
@@ -79,7 +83,7 @@ public class Main {
 		 */
 		System.out.println("__________________________________________");
 		
-		MySQLProduktBatchDAO produktbatch = new MySQLProduktBatchDAO();
+		ProduktBatchDAO produktbatch = new MySQLProduktBatchDAO();
 		
 		System.out.println("Produktbatch nummer 2:");
 		try { System.out.println(produktbatch.getProduktBatch(2)); }
@@ -119,31 +123,68 @@ public class Main {
 	private static void testPBK(){
 		//Produkt batch komponent
 		
-		//TODO implement test
+		System.out.println("__________________________________________");
+		
+		ProduktBatchKompDAO produktbatchkomponent = new MySQLProduktBatchKomponentDAO();
+		
+		//DONE test getProduktBatchKomp(pbId, rbId)
+		System.out.println("Produktbatchkompoent: pbId = 1, rbId = 2: ");
+		try { System.out.println(produktbatchkomponent.getProduktBatchKomp(1,2)); }
+		catch (DALException e) { System.out.println(e.getMessage()); }
+		
+		//TODO test getProduktBatchKompList(pbId)
+		
+		//TODO test getProduktBatchKompList()
+		
+		//TODO test createProduktBatchKomp(ProduktBatchKompDTO produktbatchkomponent)
+		
+		//TODO test updateProduktBatchKomp(ProduktBatchKompDTO produktbatchkomponent)
 	}
 	
-	private static void testR(){
+	private static void testRec(){
 		//Recept
 		
-		//TODO implement test
+		//TODO test getRecept(receptId)
+		
+		//TODO test getReceptList()
+		
+		//TODO test createRecept(ReceptDTO)
+		
+		//TODO test updateRecept(ReceptDTO)
 	}
 	
-	private static void testRK(){
+	private static void testRecKomp(){
 		//Recept komponent
 		
-		//TODO implement test
+		//TODO test getReceptKomp(receptId, raavareId)
+		
+		//TODO test getReceptKompList(raavareId)
+		
+		//TODO test getReceptKompList()
+				
+		//TODO test createReceptKomp(ReceptDTO)
+				
+		//TODO test updateReceptKomp(ReceptDTO)
 	}
 	
-	private static void testRB(){
+	private static void testRaaBat(){
 		//Raavare batch
 		
-		//TODO implement test
+		//TODO test getRaavareBatch(int rbId)
+		
+		//TODO test getRaavareBatchList()
+		
+		//TODO test getRaavareBatchList(int raavareId)
+		
+		//TODO test createRaavareBatch(RaavareBatchDTO raavarebatch)
+		
+		//TODO updateRaavareBatch(RaavareBatchDTO raavarebatch)
 	}
 	
 	private static void testRaa(){
 		//Raavare batch komponent
 		
-System.out.println("__________________________________________");
+		System.out.println("__________________________________________");
 		
 		MySQLRaavareDAO raa = new MySQLRaavareDAO();
 		
