@@ -133,19 +133,55 @@ public class Main {
 		System.out.println("__________________________________________");
 		
 		ProduktBatchKompDAO produktbatchkomponent = new MySQLProduktBatchKomponentDAO();
+		ProduktBatchKompDTO pro = new ProduktBatchKompDTO(5, 3, 0.5, 4.20, 3);
+		List<ProduktBatchKompDTO> produktbatchkomponentlist;
 		
 		//DONE test getProduktBatchKomp(pbId, rbId)
-		System.out.println("Produktbatchkompoent: pbId = 1, rbId = 2: ");
+		System.out.println("Produktbatchkomponent: pbId = 1, rbId = 2: ");
 		try { System.out.println(produktbatchkomponent.getProduktBatchKomp(1,2)); }
 		catch (DALException e) { System.out.println(e.getMessage()); }
 		
-		//TODO test getProduktBatchKompList(pbId)
-		
 		//TODO test getProduktBatchKompList()
+		System.out.println("Alle produktbatchkomponenter:");
+		try {
+			produktbatchkomponentlist = produktbatchkomponent.getProduktBatchKompList();
+			for(int i = 0; i<produktbatchkomponentlist.size(); i++){
+				System.out.println(produktbatchkomponentlist.get(i)); 
+				}
+			}	
+		catch (DALException e) { System.out.println(e.getMessage()); }
+	
+		//TODO test getProduktBatchKompList(pbId)
+		System.out.println("Alle produktbatchkomponenter med produktbatch id = 3:");
+		try {
+			produktbatchkomponentlist = produktbatchkomponent.getProduktBatchKompList(3);
+			for(int i = 0; i<produktbatchkomponentlist.size(); i++){
+				System.out.println(produktbatchkomponentlist.get(i)); 
+				}
+			}	
+		catch (DALException e) { System.out.println(e.getMessage()); }
 		
 		//TODO test createProduktBatchKomp(ProduktBatchKompDTO produktbatchkomponent)
+		System.out.println("Indsaettelse af ny produktbatchkomponent med pb_id = 5 og rb_id = 3");
+		try { produktbatchkomponent.createProduktBatchKomp(pro); }
+		catch (DALException e) { System.out.println(e.getMessage()); }
+		
+		System.out.println("Produktbatchkomponent 5,3: ");
+		try { System.out.println(produktbatchkomponent.getProduktBatchKomp(5,3)); }
+		catch (DALException e) { System.out.println(e.getMessage()); }
+		
 		
 		//TODO test updateProduktBatchKomp(ProduktBatchKompDTO produktbatchkomponent)
+		System.out.println("Opdatering af produktbatchkomponent med pb_id = 5 og rb_id = 3");
+		pro.setOprId(2);
+		pro.setNetto(420.69);
+		try { produktbatchkomponent.updateProduktBatchKomp(pro); }
+		catch (DALException e) { System.out.println(e.getMessage()); }
+		
+		System.out.println("Produktbatchkomponent 5,3: ");
+		try { System.out.println(produktbatchkomponent.getProduktBatchKomp(5,3)); }
+		catch (DALException e) { System.out.println(e.getMessage()); }
+		
 	}
 	
 	private static void testRec(){

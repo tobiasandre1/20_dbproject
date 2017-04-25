@@ -12,7 +12,7 @@ ra_SELECT						= SELECT * FROM raavare WHERE raavare_id = ?;
 opr_SELECT_ALL					= SELECT * FROM operatoer;
 pb_SELECT_ALL					= SELECT * FROM produktbatch;
 pb_komponent_SELECT_ALL			= SELECT * FROM produktbatchkomponent;
-pb_komponent_SELECT_ALL_rec_id	= SELECT * FROM produktbatchkomponent WHERE recept_id = ?;
+pb_komponent_SELECT_ALL_rec_id	= SELECT * FROM produktbatchkomponent WHERE rb_id = ?;
 rec_SELECT_ALL					= SELECT * FROM recept;
 rec_komponent_SELECT_ALL		= SELECT * FROM receptkomponent;
 rec_komponent_SELECT_ALL_rec_id	= SELECT * FROM receptkomponent WHERE recept_id = ?;
@@ -33,7 +33,7 @@ ra_INSERT						= INSERT INTO raavare(raavare_id, raavare_navn, leverandoer) VALU
 
 opr_UPDATE						= UPDATE operatoer SET opr_navn = '?', ini = '?', cpr = '?', password = '?' WHERE opr_id = ?;
 pb_UPDATE						= UPDATE produktbatch SET status = ?, recept_id = ? WHERE pb_id = ?;
-pb_komponent_UPDATE				= UPDATE produktbatchkomponent SET tara = ?, netto = ?, opr_id = ? WHERE recept_id = ? AND raavare_id = ?;
+pb_komponent_UPDATE				= UPDATE produktbatchkomponent SET tara = ?, netto = ?, opr_id = ? WHERE pb_id = ? AND rb_id = ?;
 rec_UPDATE						= UPDATE recept SET recept_navn = '?' WHERE recept_id = ?;
 rec_komponent_UPDATE			= UPDATE receptkomponent SET nom_netto = ?, tolerance = ? WHERE recept_id = ? AND raavare_id = ?;
 rab_UPDATE						= UPDATE raavarebatch SET raavare_id = ?, maengde = ? WHERE rb_id = ?;
