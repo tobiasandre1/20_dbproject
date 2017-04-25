@@ -178,7 +178,7 @@ public class Main {
 		
 		//TODO test createRaavareBatch(RaavareBatchDTO raavarebatch)
 		
-		//TODO updateRaavareBatch(RaavareBatchDTO raavarebatch)
+		//TODO updateRaavareBatch(RaavareBatchDTO raavarebatch) - Tobias
 	}
 	
 	private static void testRaa(){
