@@ -62,7 +62,7 @@ public class MySQLReceptDAO implements ReceptDAO {
 
 	@Override
 	public void updateRecept(ReceptDTO recept) throws DALException {
-		String statement = SQLMapper.getStatement("rec_INSERT");
+		String statement = SQLMapper.getStatement("rec_UPDATE");
 		String[] values = new String[]{
 						recept.getReceptNavn(),	
 						Integer.toString(recept.getReceptId())

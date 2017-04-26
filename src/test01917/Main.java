@@ -36,16 +36,16 @@ public class Main {
 		catch (ClassNotFoundException e) { e.printStackTrace(); }
 		catch (SQLException e) { e.printStackTrace(); }
 		
-		testOPR(); 	//Operatoer test
+//		testOPR(); 	//Operatoer test
 		
 		//testPB(); 		//ProduktBatch test
 //		testPBK(); 	//ProduktBatchKomponent test - not implemented
-		//testRec();		//Recept test - not implemented
+		testRec();		//Recept test - not implemented
 		/*testRecK();		//ReceptKomponent test - not implemented
 		testRaaBat();	//RaavareBatch test - not implemented
 		testRaa();		//Raavare test - not implemented
 		*/
-		//testView();
+//		testView();
 		
 	}
 	
@@ -195,7 +195,7 @@ public class Main {
 		
 		//Test af getRecept()
 		System.out.println();
-		System.out.println("Recept id 1:");
+		System.out.println("Recept id 1:");	
 		try { System.out.println(recept.getRecept(1)); }
 		catch (DALException e) { System.out.println(e.getMessage()); }
 		
