@@ -40,7 +40,10 @@ rab_UPDATE						= UPDATE raavarebatch SET raavare_id = ?, maengde = ? WHERE rb_i
 ra_UPDATE						= UPDATE raavare SET raavare_navn = '?', leverandoer = '?' WHERE raavare_id = ?;
 
 
-create_view_mad					= CREATE VIEW mad AS SELECT rk.recept_id, rk.raavare_id, re.recept_navn, ra.raavare_navn, ra.leverandoer FROM receptkomponent rk NATURAL JOIN recept re NATURAL JOIN raavare ra;
-create_view_vejning				= CREATE VIEW vejning AS SELECT opr.opr_id, opr.opr_navn, pbk.tara, pbk.netto, ra.raavare_id, ra.raavare_navn, rab.maengde FROM operatoer opr NATURAL JOIN produktbatchkomponent pbk NATURAL JOIN raavare ra NATURAL JOIN raavarebatch rab;
-show_view_mad					= SELECT * FROM mad;
-show_view_vejning				= SELECT * FROM vejning;
+view_create_mad					= CREATE VIEW mad AS SELECT rk.recept_id, rk.raavare_id, re.recept_navn, ra.raavare_navn, ra.leverandoer FROM receptkomponent rk NATURAL JOIN recept re NATURAL JOIN raavare ra;
+view_create_vejning				= CREATE VIEW vejning AS SELECT opr.opr_id, opr.opr_navn, pbk.tara, pbk.netto, ra.raavare_id, ra.raavare_navn, rab.maengde FROM operatoer opr NATURAL JOIN produktbatchkomponent pbk NATURAL JOIN raavare ra NATURAL JOIN raavarebatch rab;
+view_show_mad					= SELECT * FROM mad;
+view_show_vejning				= SELECT * FROM vejning;
+view_drop_mad					= DROP VIEW mad;
+view_drop_vejning				= DROP VIEW vejning; 
+

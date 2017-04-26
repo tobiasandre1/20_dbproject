@@ -36,7 +36,7 @@ public class Main {
 		catch (ClassNotFoundException e) { e.printStackTrace(); }
 		catch (SQLException e) { e.printStackTrace(); }
 		
-		//testOPR(); 	//Operatoer test
+		testOPR(); 	//Operatoer test
 		
 		//testPB(); 		//ProduktBatch test
 //		testPBK(); 	//ProduktBatchKomponent test - not implemented
@@ -45,7 +45,7 @@ public class Main {
 		testRaaBat();	//RaavareBatch test - not implemented
 		testRaa();		//Raavare test - not implemented
 		*/
-		testView();
+		//testView();
 		
 	}
 	
@@ -387,8 +387,9 @@ public class Main {
 		
 		Views view = new Views();
 		
+		System.out.println("Implementing views:");
 		try {view.ImplementViews();}
-		catch(DALException e){e.getMessage();}
+		catch(DALException e){System.out.println(e.getMessage());}
 		
 	}
 	
