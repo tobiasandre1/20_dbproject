@@ -11,6 +11,8 @@ import dto01917.ReceptDTO;
 import dto01917.ReceptKompDTO;
 import dto01917.RaavareBatchDTO;
 import dto01917.RaavareDTO;
+import dto01917.ViewMadDTO;
+import dto01917.ViewVejningDTO;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -24,6 +26,8 @@ import daoimpl01917.MySQLRaavareDAO;
 import daoimpl01917.MySQLReceptDAO;
 import daoimpl01917.MySQLReceptKomponentDAO;
 
+import views.Views;
+
 public class Main {
 	public static void main(String[] args) {
 		try { new Connector(); } 
@@ -36,11 +40,12 @@ public class Main {
 		
 		//testPB(); 		//ProduktBatch test
 //		testPBK(); 	//ProduktBatchKomponent test - not implemented
-		testRec();		//Recept test - not implemented
+		//testRec();		//Recept test - not implemented
 		/*testRecK();		//ReceptKomponent test - not implemented
 		testRaaBat();	//RaavareBatch test - not implemented
 		testRaa();		//Raavare test - not implemented
 		*/
+		testView();
 		
 	}
 	
@@ -375,5 +380,16 @@ public class Main {
 		catch (DALException e) { System.out.println(e.getMessage()); }
 		
 		System.out.println("");
+		
 	}
+	
+	private static void testView(){
+		
+		Views view = new Views();
+		
+		try {view.ImplementViews();}
+		catch(DALException e){e.getMessage();}
+		
+	}
+	
 }
