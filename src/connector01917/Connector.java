@@ -39,7 +39,6 @@ public class Connector
 	
 	private static Connection conn;
 	private static Statement stm;
-	private static PreparedStatement pstm;
 	
 	public Connector(String server, int port, String database,
 			String username, String password)
@@ -69,31 +68,5 @@ public class Connector
 		try { return stm.executeUpdate(cmd); }
 		catch (SQLException e) { throw new DALException(e); }
 	}
-	
-	public static ResultSet doQuery() throws DALException{
-		try { return pstm.executeQuery(); }
-		catch (SQLException e) { throw new DALException(e); }
-	}
-	
-	public static int doUpdate() throws DALException
-	{
-		try { return pstm.executeUpdate(); }
-		catch (SQLException e) { throw new DALException(e); }
-	}
-	
-	
-	
-	public static void setPreparedStatement(String cmd) throws DALException{
-		try{
-			conn.prepareStatement(cmd);
-		}
-		catch (SQLException e) { throw new DALException(e); }
-		
-	}
-	
-	public static PreparedStatement getPreparedStatement(){
-		return pstm;
-	}
-	
 	
 }
