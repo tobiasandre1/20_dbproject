@@ -387,8 +387,28 @@ public class Main {
 		
 		Views view = new Views();
 		
+		System.out.println("Drop views:");
+		try {view.DropViews();}
+		catch(DALException e){System.out.println(e.getMessage());}
+		
 		System.out.println("Implementing views:");
 		try {view.ImplementViews();}
+		catch(DALException e){System.out.println(e.getMessage());}
+		
+		System.out.println("Show view mad:");
+		try {System.out.println(view.getMad(1, 1));}
+		catch(DALException e){System.out.println(e.getMessage());}
+		
+		System.out.println("Show view vejning:");
+		try {System.out.println(view.getVejning(1));}
+		catch(DALException e){System.out.println(e.getMessage());}
+		
+		System.out.println("Show view mad list:");
+		try {System.out.println(view.getMadList());}
+		catch(DALException e){System.out.println(e.getMessage());}
+		
+		System.out.println("Show view vejning list:");
+		try {System.out.println(view.getVejningList());}
 		catch(DALException e){System.out.println(e.getMessage());}
 		
 	}
