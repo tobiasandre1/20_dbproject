@@ -91,7 +91,7 @@ public class Views {
 		{
 			while (rs.next()) 
 			{
-				list.add(new ViewVejningDTO(rs.getInt("opr_id"), rs.getString("opr_navn"), rs.getInt("tara"), rs.getInt("netto"), rs.getInt("raavare_id"), rs.getString("raaavare_navn"), rs.getInt("maengde")));
+				list.add(new ViewVejningDTO(rs.getInt("opr_id"), rs.getString("opr_navn"), rs.getInt("tara"), rs.getInt("netto"), rs.getInt("raavare_id"), rs.getString("raavare_navn"), rs.getInt("maengde")));
 			}
 		}
 		catch (SQLException e) { throw new DALException(e); }

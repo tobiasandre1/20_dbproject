@@ -40,12 +40,12 @@ public class Main {
 		
 		//testPB(); 		//ProduktBatch test
 //		testPBK(); 	//ProduktBatchKomponent test - not implemented
-		testRec();		//Recept test - not implemented
+		//testRec();		//Recept test - not implemented
 		/*testRecK();		//ReceptKomponent test - not implemented
 		testRaaBat();	//RaavareBatch test - not implemented
 		testRaa();		//Raavare test - not implemented
 		*/
-//		testView();
+		testView();
 		
 	}
 	
