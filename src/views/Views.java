@@ -16,7 +16,7 @@ public class Views {
 
 	public void ImplementViews() throws DALException {
 		
-		String statement = SQLMapper.getStatement("view_create_vejning");
+		String statement = SQLMapper.getStatement("view_create_mad");
 		Connector.doQuery(statement);
 		System.out.println("View 1: DONE");
 			
