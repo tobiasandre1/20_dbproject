@@ -36,15 +36,13 @@ public class Main {
 		catch (ClassNotFoundException e) { e.printStackTrace(); }
 		catch (SQLException e) { e.printStackTrace(); }
 		
-//		testOPR(); 	//Operatoer test
-		
-		//testPB(); 		//ProduktBatch test
-//		testPBK(); 	//ProduktBatchKomponent test - not implemented
-		//testRec();		//Recept test - not implemented
-		/*testRecK();		//ReceptKomponent test - not implemented
-		testRaaBat();	//RaavareBatch test - not implemented
-		testRaa();		//Raavare test - not implemented
-		*/
+		testOPR(); 	//Operatoer test
+		testPB(); 		//ProduktBatch test
+		testPBK(); 	//ProduktBatchKomponent test
+		testRec();		//Recept test
+		testRecKomp();		//ReceptKomponent test
+		testRaaBat();	//RaavareBatch test
+		testRaa();		//Raavare test
 		testView();
 		
 	}
